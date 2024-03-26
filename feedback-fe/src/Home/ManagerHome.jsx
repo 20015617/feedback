@@ -10,7 +10,7 @@ const getFeedback = () =>
     },
   });
 
-function ManagerHome() {
+function ManagerHome({ setIsLoggedIn, setIsManager }) {
   const [feedBackList, setFeedBackList] = useState([]);
 
   const refreshFeedback = () =>
@@ -24,6 +24,17 @@ function ManagerHome() {
   }, []);
   return (
     <div className={styles.container}>
+      <button
+        className={styles.logoutButton}
+        type="button"
+        onClick={() => {
+          setIsLoggedIn(false);
+          setIsManager(false);
+          sessionStorage.clear();
+        }}
+      >
+        Logout
+      </button>
       <h4>Feedback by your team:</h4>
       <FeedbackList variant="manager" feedbackList={feedBackList} />
     </div>

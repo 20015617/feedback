@@ -9,7 +9,11 @@ function App() {
   const [isManager, setIsManager] = useState(false);
 
   if (loggedIn) {
-    return isManager ? <ManagerHome /> : <EmployeeHome />;
+    return isManager ? (
+      <ManagerHome setIsLoggedIn={setIsLoggedIn} setIsManager={setIsManager} />
+    ) : (
+      <EmployeeHome setIsLoggedIn={setIsLoggedIn} setIsManager={setIsManager} />
+    );
   }
   return <Login setIsLoggedIn={setIsLoggedIn} setIsManager={setIsManager} />;
 }

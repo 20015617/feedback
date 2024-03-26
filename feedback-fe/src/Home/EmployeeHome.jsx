@@ -23,7 +23,7 @@ const getFeedback = () =>
     },
   });
 
-function EmployeeHome() {
+function EmployeeHome({ setIsLoggedIn, setIsManager }) {
   const [feedBack, setFeedBack] = useState("");
   const [message, setMessage] = useState("");
   const [feedBackList, setFeedBackList] = useState([]);
@@ -40,6 +40,17 @@ function EmployeeHome() {
 
   return (
     <div className={styles.container}>
+      <button
+        className={styles.logoutButton}
+        type="button"
+        onClick={() => {
+          setIsLoggedIn(false);
+          setIsManager(false);
+          sessionStorage.clear();
+        }}
+      >
+        Logout
+      </button>
       <form>
         <fieldset className={styles.fieldSetContainer}>
           <legend>Enter new feedback:</legend>
